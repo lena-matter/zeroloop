@@ -216,9 +216,51 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,248,244,
 </style>
 </head>
 <body>
-  <a href="https://lena-matter.github.io/ThinkOS" class="back-to-home">
-  ← Back to ThinkOS
-</a>
+  <!-- ========== ThinkOS Back Navigation Bar ========== -->
+<!-- Paste this entire block right after the opening <body> tag in each platform's index.html -->
+
+<div id="thinkos-back-bar" style="
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 24px;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  font-family: 'Poppins', sans-serif;
+">
+  <a href="https://lena-matter.github.io/ThinkOS" style="display:flex; align-items:center; gap:12px; text-decoration:none;">
+    <!-- ThinkOS Logo -->
+    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMiIgZGF0YS1uYW1lPSJMYXllciAyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3MjEgMTc3LjIiPgogIDxkZWZzPgogICAgPHN0eWxlPgogICAgICAuY2xzLTEgewogICAgICAgIGZpbGw6ICM0M2FmNDk7CiAgICAgIH0KICAgIDwvc3R5bGU+CiAgPC9kZWZzPgogIDxnIGlkPSJMYXllcl8xLTIiIGRhdGEtbmFtZT0iTGF5ZXIgMSI+CiAgICA8Zz4KICAgICAgPGc+CiAgICAgICAgPHBhdGggZD0iTTkwLjY4LDE1LjU4djIwLjQ3aC0zMi45NHYxMDUuOTZoLTI0Ljc5VjM2LjA0SDBWMTUuNThoOTAuNjhaIi8+CiAgICAgICAgPHBhdGggZD0iTTE4My44NCw0NS4xOWM1Ljc4LDMuMzIsMTAuMyw4LjIxLDEzLjU1LDE0LjY3LDMuMjUsNi40Niw0Ljg3LDE0LjIyLDQuODcsMjMuMjd2NTguODdoLTI0Ljh2LTU1LjQzYzAtNy45Ny0xLjk1LTE0LjEtNS44NC0xOC4zOC0zLjktNC4yOC05LjIxLTYuNDMtMTUuOTQtNi40M3MtMTIuMjUsMi4xNS0xNi4yMSw2LjQzYy0zLjk2LDQuMjktNS45MywxMC40Mi01LjkzLDE4LjM4djU1LjQzaC0yNC43OVY3Ljk3aDI0Ljc5djQ2LjE5YzMuMTktNC4zNSw3LjQ0LTcuNzYsMTIuNzUtMTAuMjMsNS4zMS0yLjQ3LDExLjIyLTMuNzEsMTcuNzEtMy43MSw3LjQ0LDAsMTQuMDUsMS42NiwxOS44NCw0Ljk4WiIvPgogICAgICAgIDxwYXRoIGQ9Ik0yMjcuNDksMjUuNDVjLTIuODktMi44NC00LjM0LTYuMzctNC4zNC0xMC42czEuNDQtNy43Niw0LjM0LTEwLjZjMi44OS0yLjg0LDYuNTItNC4yNiwxMC44OS00LjI2czgsMi40MiwxMC44OSw0LjI2YzIuODksMi44NCw0LjM0LDYuMzcsNC4zNCwxMC42cy0xLjQ1LDcuNzYtNC4zNCwxMC42Yy0yLjg5LDIuODQtNi41Myw0LjI2LTEwLjg5LDQuMjZzLTgtMS40Mi0xMC44OS00LjI2Wk0yNTAuNjEsNDEuNjZ2MTAwLjM1aC0yNC43OVY0MS42NmgyNC43OVoiLz4KICAgICAgICA8cGF0aCBkPSJNMzU3Ljc2LDUxLjUzYzcuMiw3LjU1LDEwLjgsMTguMDgsMTAuOCwzMS42MXY1OC44N2gtMjQuOHYtNTUuNDNjMC03Ljk3LTEuOTUtMTQuMS01Ljg0LTE4LjM4LTMuOS00LjI4LTkuMjEtNi40My0xNS45NC02LjQzcy0xMi4yNSwyLjE1LTE2LjIxLDYuNDNjLTMuOTYsNC4yOS01LjkzLDEwLjQyLTUuOTMsMTguMzh2NTUuNDNoLTI0Ljc5VjQxLjY2aDI0Ljc5djEyLjVjMy4zLTQuMzUsNy41My03Ljc2LDEyLjY2LTEwLjIzLDUuMTQtMi40NywxMC43Ny0zLjcxLDE2LjkxLTMuNzEsMTEuNjksMCwyMS4xMywzLjc4LDI4LjM0LDExLjMyWiIvPgogICAgICAgIDxwYXRoIGQ9Ik00NTAuMjEsMTQyLjAxbC0zMy4zLTQyLjc1djQyLjc1aC0yNC43OVY3Ljk3aDI0Ljc5djc2LjI2bDMyLjk0LTQyLjU3aDMyLjIzbC00My4yMSw1MC4zNSw0My41Nyw0OS45OWgtMzIuMjNaIi8+CiAgICAgICAgPHBhdGggZD0iTTUyMS4wNSwxMzQuOTRjLTkuNjgtNS41NS0xNy4zNi0xMy4yNS0yMy4wMy0yMy4wOS01LjY3LTkuODQtOC41LTIwLjk4LTguNS0zMy40MnMyLjgzLTIzLjM5LDguNS0zMy4yNGM1LjY3LTkuODQsMTMuMzQtMTcuNTQsMjMuMDMtMjMuMDksOS42OC01LjU1LDIwLjMtOC4zMywzMS44OC04LjMzczIyLjM0LDIuNzgsMzEuOTcsOC4zM2M5LjYyLDUuNTYsMTcuMjQsMTMuMjUsMjIuODUsMjMuMDksNS42MSw5Ljg0LDguNDEsMjAuOTIsOC40MSwzMy4yNHMtMi44LDIzLjU4LTguNDEsMzMuNDJjLTUuNjEsOS44NC0xMy4yNiwxNy41NC0yMi45NCwyMy4wOS05LjY4LDUuNTYtMjAuMzEsOC4zMy0zMS44OCw4LjMzcy0yMi4yLTIuNzgtMzEuODgtOC4zM1pNNTcyLjU5LDExNS40N2M1LjY3LTMuNDQsMTAuMS04LjM2LDEzLjI4LTE0Ljc2LDMuMTktNi40LDQuNzgtMTMuODMsNC43OC0yMi4yOHMtMS42LTE1Ljg1LTQuNzgtMjIuMTljLTMuMTktNi4zNC03LjYyLTExLjItMTMuMjgtMTQuNTgtNS42Ny0zLjM4LTEyLjIyLTUuMDctMTkuNjYtNS4wN3MtMTQuMDIsMS42OS0xOS43NSw1LjA3Yy01LjczLDMuMzgtMTAuMTgsOC4yNC0xMy4zNywxNC41OC0zLjE5LDYuMzQtNC43OCwxMy43NC00Ljc4LDIyLjE5czEuNiwxNS44OCw0Ljc4LDIyLjI4YzMuMTksNi40LDcuNjQsMTEuMzIsMTMuMzcsMTQuNzYsNS43MywzLjQ0LDEyLjMxLDUuMTYsMTkuNzUsNS4xNnMxMy45OS0xLjcyLDE5LjY2LTUuMTZaIi8+CiAgICAgICAgPHBhdGggZD0iTTY1My45NywxMzguNzVjLTYuOTEtMy4wMi0xMi4zNy03LjM2LTE2LjM4LTEzLjA0LTQuMDItNS42Ny02LjA4LTEyLjM4LTYuMi0yMC4xMWgyNi41N2MuMzUsNS4xOSwyLjE1LDkuMyw1LjQsMTIuMzIsMy4yNSwzLjAyLDcuNyw0LjUzLDEzLjM3LDQuNTNzMTAuMzMtMS40MiwxMy42NC00LjI2YzMuMy0yLjg0LDQuOTYtNi41NSw0Ljk2LTExLjE0LDAtMy43NC0xLjEyLTYuODItMy4zNy05LjI0LTIuMjQtMi40MS01LjA1LTQuMzItOC40MS01LjcxLTMuMzctMS4zOS04LTIuOTMtMTMuOS00LjYyLTguMDMtMi40MS0xNC41NS00LjgtMTkuNTctNy4xNS01LjAyLTIuMzUtOS4zMy01LjkyLTEyLjkzLTEwLjY5LTMuNi00Ljc3LTUuNC0xMS4xNC01LjQtMTkuMTEsMC03LjQ5LDEuODMtMTQuMDEsNS40OS0xOS41NiwzLjY2LTUuNTUsOC43OS05LjgxLDE1LjQxLTEyLjc3LDYuNjEtMi45NiwxNC4xNy00LjQ0LDIyLjY3LTQuNDQsMTIuNzUsMCwyMy4xMSwzLjE3LDMxLjA4LDkuNTEsNy45Nyw2LjM0LDEyLjM3LDE1LjE5LDEzLjE5LDI2LjU0aC0yNy4yN2MtLjI0LTQuMzUtMi4wNC03Ljk0LTUuNC0xMC43OC0zLjM3LTIuODQtNy44Mi00LjI2LTEzLjM3LTQuMjYtNC44NCwwLTguNzEsMS4yNy0xMS42LDMuOC0yLjg5LDIuNTQtNC4zNCw2LjIyLTQuMzQsMTEuMDUsMCwzLjM4LDEuMDksNi4xOSwzLjI4LDguNDIsMi4xOCwyLjI0LDQuOSw0LjA1LDguMTUsNS40MywzLjI1LDEuMzksNy44MiwyLjk5LDEzLjczLDQuOCw4LjAzLDIuNDIsMTQuNTgsNC44MywxOS42Niw3LjI1LDUuMDgsMi40Miw5LjQ1LDYuMDQsMTMuMTEsMTAuODcsMy42Niw0LjgzLDUuNDksMTEuMTcsNS40OSwxOS4wMiwwLDYuNzYtMS43MSwxMy4wNC01LjE0LDE4Ljg0LTMuNDMsNS44LTguNDQsMTAuNDItMTUuMDUsMTMuODYtNi42MSwzLjQ0LTE0LjQ2LDUuMTYtMjMuNTUsNS4xNi04LjYyLDAtMTYuMzgtMS41MS0yMy4yOS00LjUzWiIvPgogICAgICA8L2c+CiAgICAgIDxyZWN0IGNsYXNzPSJjbHMtMSIgeD0iNDg5LjQzIiB5PSIxNjMuODgiIHdpZHRoPSIxMjcuMDIiIGhlaWdodD0iMTMuMzIiLz4KICAgIDwvZz4KICA8L2c+Cjwvc3ZnPg==" alt="ThinkOS" style="height: 28px; width: auto;">
+    <!-- Back text -->
+    <span style="
+      font-size: 13px;
+      font-weight: 500;
+      color: #205C40;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    ">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#205C40" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to ThinkOS
+    </span>
+  </a>
+</div>
+
+<!-- Add top padding to your page so content doesn't hide behind the fixed bar -->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+  body { padding-top: 52px; }
+</style>
+<!-- ========== End ThinkOS Back Navigation Bar ========== -->
+ 
 <div class="dot-grid"></div>
 <div class="blob blob-1"></div>
 <div class="blob blob-2"></div>
