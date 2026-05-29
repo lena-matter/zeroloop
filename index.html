@@ -43,8 +43,9 @@ body{font-family:'DM Sans',-apple-system,sans-serif;background:var(--bg);color:v
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,248,244,0.88);backdrop-filter:blur(16px);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;border-bottom:1px solid var(--border);}
-.nav-logo{font-family:'DM Serif Display',serif;font-size:1.4rem;color:var(--coral-deep);}
-.nav-logo span{color:var(--sage-dark);}
+.nav-logo{display:flex;align-items:center;gap:0.55rem;}
+.nav-logo img{height:34px;width:auto;display:block;}
+.nav-logo .nav-tag{font-family:'DM Sans',sans-serif;font-size:0.7rem;color:var(--ink-muted);font-weight:500;letter-spacing:1.2px;text-transform:uppercase;}
 .nav-links{display:flex;gap:0.3rem;flex-wrap:wrap;}
 .nav-links button{background:none;border:none;padding:0.4rem 0.8rem;font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:500;color:var(--ink-muted);cursor:pointer;border-radius:20px;transition:all 0.25s;}
 .nav-links button:hover{color:var(--ink);background:var(--peach-pale);}
@@ -143,13 +144,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,248,244,
 .map-sidebar .sidebar-right{flex:1;min-width:260px;}
 
 /* AGENT PANELS */
-.agent-card{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 2px 12px var(--shadow);transition:transform 0.2s;margin-bottom:1.25rem;}
+.agent-card{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 2px 12px var(--shadow);transition:transform 0.2s;margin-bottom:1.25rem;display:flex;flex-direction:column;}
 .agent-card:hover{transform:translateY(-2px);}
-.agent-header{padding:1.2rem 1.4rem;display:flex;align-items:center;gap:1rem;}
+.agent-header{padding:1.3rem 1.5rem;display:flex;align-items:center;gap:1rem;}
 .agent-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
 .agent-header h3{font-size:1.05rem;font-weight:600;}
-.agent-header p{font-size:0.78rem;color:var(--ink-muted);margin-top:0.1rem;}
-.agent-body{padding:0 1.4rem 1.4rem;}
+.agent-header p{font-size:0.78rem;color:var(--ink-muted);margin-top:0.15rem;}
+.agent-body{padding:1.2rem 1.5rem 1.5rem;flex:1;}
 .agent-feature{display:flex;align-items:flex-start;gap:0.65rem;padding:0.5rem 0;border-bottom:1px solid var(--border);}
 .agent-feature:last-child{border-bottom:none;}
 .agent-feature-dot{width:8px;height:8px;border-radius:50%;margin-top:0.35rem;flex-shrink:0;}
@@ -188,6 +189,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,248,244,
 .tl-item h4{font-size:0.95rem;font-weight:600;}
 .tl-item .tl-time{font-size:0.78rem;color:var(--coral);font-weight:500;display:inline-block;background:var(--peach-pale);padding:0.1rem 0.55rem;border-radius:10px;margin-top:0.15rem;}
 .tl-item p{font-size:0.85rem;color:var(--ink-light);margin-top:0.3rem;}
+
+/* MODERN ICONS */
+.ic{flex-shrink:0;}
+.icon-tile{display:inline-flex;align-items:center;justify-content:center;border-radius:14px;}
+.icon-circle{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;}
 
 /* Scrollbar */
 ::-webkit-scrollbar{width:8px;}
@@ -285,7 +291,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,248,244,
 <div class="blob blob-2"></div>
 
 <nav>
-  <div class="nav-logo">Zero<span>Loop</span> <span style="font-family:'DM Sans';font-size:0.72rem;color:var(--ink-muted);font-weight:500;vertical-align:middle;margin-left:0.3rem;">FACILITIES</span></div>
+  <div class="nav-logo">
+    <img src="zeroloop_logo.svg" alt="ZeroLoop">
+    <span class="nav-tag">Facilities</span>
+  </div>
   <div class="nav-links">
     <button class="active" onclick="go('dash')">Dashboard</button>
     <button onclick="go('map')">Building Map</button>
@@ -321,7 +330,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,248,244,
   <div class="grid grid-2" style="margin-bottom:1.5rem;">
     <div class="agent-card" onclick="go('agents')" style="cursor:pointer">
       <div class="agent-header" style="background:linear-gradient(135deg,var(--sage-light) 0%,rgba(200,221,198,0.3) 100%);">
-        <div class="agent-icon" style="background:var(--sage);color:white;">&#9881;</div>
+        <div class="agent-icon" style="background:var(--sage);color:white;"><span data-icon="gear" data-icon-size="24" data-icon-stroke="2"></span></div>
         <div><h3>Facility Waste Efficiency Agent</h3><p>Operations, scheduling, predictive maintenance</p></div>
       </div>
       <div class="agent-body">
@@ -335,7 +344,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,248,244,
     </div>
     <div class="agent-card" onclick="go('engage')" style="cursor:pointer">
       <div class="agent-header" style="background:linear-gradient(135deg,var(--peach-pale) 0%,rgba(252,238,226,0.3) 100%);">
-        <div class="agent-icon" style="background:var(--coral);color:white;">&#128101;</div>
+        <div class="agent-icon" style="background:var(--coral);color:white;"><span data-icon="users" data-icon-size="24" data-icon-stroke="2"></span></div>
         <div><h3>Workplace Engagement Agent</h3><p>Gamification, education, sustainability culture</p></div>
       </div>
       <div class="agent-body">
@@ -456,7 +465,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,248,244,
   <!-- Agent 1: Facility Waste Efficiency -->
   <div class="agent-card" style="margin-bottom:2rem;">
     <div class="agent-header" style="background:linear-gradient(135deg,var(--sage-light) 0%,rgba(200,221,198,0.2) 100%);">
-      <div class="agent-icon" style="background:var(--sage);color:white;font-size:1.4rem;">&#9881;</div>
+      <div class="agent-icon" style="background:var(--sage);color:white;"><span data-icon="gear" data-icon-size="26" data-icon-stroke="2"></span></div>
       <div><h3 style="font-size:1.15rem;">Facility Waste Efficiency Agent</h3><p>Centralised operations, predictive intelligence, resource optimisation</p></div>
     </div>
     <div class="agent-body">
@@ -495,7 +504,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,248,244,
   <!-- Agent 2: Workplace Engagement -->
   <div class="agent-card">
     <div class="agent-header" style="background:linear-gradient(135deg,var(--peach-pale) 0%,rgba(252,238,226,0.2) 100%);">
-      <div class="agent-icon" style="background:var(--coral);color:white;font-size:1.4rem;">&#128101;</div>
+      <div class="agent-icon" style="background:var(--coral);color:white;"><span data-icon="users" data-icon-size="26" data-icon-stroke="2"></span></div>
       <div><h3 style="font-size:1.15rem;">Workplace Engagement Agent</h3><p>Employee initiatives, gamification, sustainability culture</p></div>
     </div>
     <div class="agent-body">
@@ -864,7 +873,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,248,244,
     <!-- Agent 1: Secure Disposal Compliance Agent -->
     <div class="card" style="border-top:4px solid var(--sage-dark);">
       <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.8rem;">
-        <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--sage-dark),var(--sage));display:flex;align-items:center;justify-content:center;font-size:1.3rem;">&#128274;</div>
+        <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--sage-dark),var(--sage));display:flex;align-items:center;justify-content:center;color:#fff;"><span data-icon="lock" data-icon-size="22" data-icon-stroke="2"></span></div>
         <div>
           <h3 style="margin:0;font-size:1rem;">Secure Disposal Compliance Agent</h3>
           <span style="font-size:0.7rem;padding:0.15rem 0.5rem;background:var(--sage-dark);color:#fff;border-radius:8px;">Active &mdash; Real-time</span>
@@ -896,7 +905,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,248,244,
     <!-- Agent 2: Confidentiality Risk Management Agent -->
     <div class="card" style="border-top:4px solid var(--coral-deep);">
       <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.8rem;">
-        <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--coral-deep),var(--coral));display:flex;align-items:center;justify-content:center;font-size:1.3rem;">&#128737;</div>
+        <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--coral-deep),var(--coral));display:flex;align-items:center;justify-content:center;color:#fff;"><span data-icon="shield" data-icon-size="22" data-icon-stroke="2"></span></div>
         <div>
           <h3 style="margin:0;font-size:1rem;">Confidentiality Risk Management Agent</h3>
           <span style="font-size:0.7rem;padding:0.15rem 0.5rem;background:var(--coral-deep);color:#fff;border-radius:8px;">Active &mdash; Continuous</span>
@@ -1003,19 +1012,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,248,244,
 
   <div class="grid grid-3">
     <div class="card" style="text-align:center;">
-      <div style="font-size:2.5rem;">&#127793;</div>
+      <div style="display:inline-flex;width:56px;height:56px;border-radius:16px;background:var(--sage-light);color:var(--sage-dark);align-items:center;justify-content:center;margin-bottom:0.4rem;"><span data-icon="tree" data-icon-size="28" data-icon-stroke="2"></span></div>
       <h3>Trees Equivalent</h3>
       <p style="font-family:'DM Serif Display',serif;font-size:1.6rem;color:var(--sage-dark);">847</p>
       <p>trees saved this year</p>
     </div>
     <div class="card" style="text-align:center;">
-      <div style="font-size:2.5rem;">&#128167;</div>
+      <div style="display:inline-flex;width:56px;height:56px;border-radius:16px;background:var(--peach-pale);color:var(--coral-deep);align-items:center;justify-content:center;margin-bottom:0.4rem;"><span data-icon="droplet" data-icon-size="28" data-icon-stroke="2"></span></div>
       <h3>Water Saved</h3>
       <p style="font-family:'DM Serif Display',serif;font-size:1.6rem;color:var(--coral-deep);">2.3M L</p>
       <p>litres preserved</p>
     </div>
     <div class="card" style="text-align:center;">
-      <div style="font-size:2.5rem;">&#9889;</div>
+      <div style="display:inline-flex;width:56px;height:56px;border-radius:16px;background:var(--sand-light);color:var(--clay);align-items:center;justify-content:center;margin-bottom:0.4rem;"><span data-icon="zap" data-icon-size="28" data-icon-stroke="2"></span></div>
       <h3>Energy Saved</h3>
       <p style="font-family:'DM Serif Display',serif;font-size:1.6rem;color:var(--sage-dark);">18.6 MWh</p>
       <p>megawatt hours</p>
@@ -1055,6 +1064,74 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,248,244,
 </div>
 
 <script>
+// ===== MODERN ICON SYSTEM (Lucide-style inline SVG) =====
+const ICONS = {
+  gear:'<path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 0 0-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37 1 .608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/>',
+  users:'<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+  lock:'<rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
+  shield:'<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/>',
+  leaf:'<path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19.2 2.96a1 1 0 0 1 1.6.8c0 2.51-.39 5.6-1.4 8.04-2.2 5.32-7.05 6.2-8.4 8.2z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/>',
+  droplet:'<path d="M12 2.69 5.64 9.05a9 9 0 1 0 12.73 0z"/>',
+  zap:'<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>',
+  pencil:'<path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5z"/>',
+  coffee:'<path d="M17 8h1a4 4 0 0 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/>',
+  book:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',
+  trophy:'<path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0z"/>',
+  flame:'<path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>',
+  laptop:'<path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16"/>',
+  dumbbell:'<path d="M6.5 6.5 17.5 17.5"/><path d="m21 21-1-1"/><path d="m3 3 1 1"/><path d="m18 22 4-4"/><path d="m2 6 4-4"/><path d="m3 10 7-7"/><path d="m14 21 7-7"/>',
+  trendUp:'<polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>',
+  trendDown:'<polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/>',
+  arrowUp:'<polyline points="18 15 12 9 6 15"/>',
+  arrowDown:'<polyline points="6 9 12 15 18 9"/>',
+  clock:'<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
+  shirt:'<path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/>',
+  utensils:'<path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/>',
+  party:'<path d="M5.8 11.3 2 22l10.7-3.79"/><path d="M4 3h.01"/><path d="M22 8h.01"/><path d="M15 2h.01"/><path d="M22 20h.01"/><path d="m22 2-2.24.75a2.9 2.9 0 0 0-1.96 3.12c.1.86-.57 1.63-1.45 1.63h-.38c-.86 0-1.6.6-1.76 1.44L14 10"/><path d="m22 13-1.99-.46a2.93 2.93 0 0 0-3.04 1.06c-.52.69-1.41.94-2.2.61l-.35-.15c-.79-.34-1.71-.05-2.16.65L12 16"/><path d="m8 8 5 5"/><path d="M16.5 19.5a2.5 2.5 0 0 1-2.45-2.97l1.13-5.86a2.5 2.5 0 0 1 4.84-.16l.46 1.4a2.5 2.5 0 0 1-.5 2.5l-2.99 4.75A2.5 2.5 0 0 1 16.5 19.5z"/>',
+  heart:'<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>',
+  package:'<path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/>',
+  alert:'<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>',
+  siren:'<path d="M7 12a5 5 0 0 1 10 0v6H7z"/><path d="M5 20a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v2H5z"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="20.66" y1="7" x2="18.93" y2="8"/><line x1="3.34" y1="7" x2="5.07" y2="8"/>',
+  globe:'<circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>',
+  barChart:'<line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/><line x1="3" y1="20" x2="21" y2="20"/>',
+  thermometer:'<path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/>',
+  tree:'<path d="M12 22v-7"/><path d="M9.5 8a2.5 2.5 0 1 1-1.4-4.5 4 4 0 0 1 7.6-1A4 4 0 0 1 22 8a4 4 0 0 1-4 4 4 4 0 0 1-6 0 4 4 0 0 1-6-4 4 4 0 0 1 3.5-4"/>',
+  scroll:'<path d="M8 21h12a2 2 0 0 0 2-2v-2H10v2a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v3h4"/><path d="M19 17V5a2 2 0 0 0-2-2H4"/>',
+  check:'<polyline points="20 6 9 17 4 12"/>',
+  circle:'<circle cx="12" cy="12" r="10"/>',
+  checkCircle:'<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>',
+  hammer:'<path d="m15 12-8.373 8.373a1 1 0 1 1-3-3L12 9"/><path d="m18 15 4-4"/><path d="m21.5 11.5-1.914-1.914a2 2 0 0 1 0-2.828l.586-.586a2 2 0 0 0 0-2.828L19 2.586a2 2 0 0 0-2.828 0L8 10.757 5.586 8.343a2 2 0 0 1 0-2.828l.586-.586a2 2 0 0 0 0-2.828L4.757.7a2 2 0 0 0-2.828 0L.515 2.115a2 2 0 0 0 0 2.828L9.172 13.6"/>',
+  building:'<rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="9" y1="22" x2="9" y2="18"/><line x1="15" y1="22" x2="15" y2="18"/><line x1="9" y1="6" x2="9.01" y2="6"/><line x1="15" y1="6" x2="15.01" y2="6"/><line x1="9" y1="10" x2="9.01" y2="10"/><line x1="15" y1="10" x2="15.01" y2="10"/><line x1="9" y1="14" x2="9.01" y2="14"/><line x1="15" y1="14" x2="15.01" y2="14"/>',
+  truck:'<rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>',
+  fileText:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>',
+  clipboard:'<rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/>',
+  medal:'<path d="M7.21 15 2.66 7.14a2 2 0 0 1 .13-2.2L4.4 2.8A2 2 0 0 1 6 2h12a2 2 0 0 1 1.6.8l1.6 2.14a2 2 0 0 1 .14 2.2L16.79 15"/><path d="M11 12 5.12 2.2"/><path d="m13 12 5.88-9.8"/><path d="M8 7h8"/><circle cx="12" cy="17" r="5"/><path d="M12 18v-2h-.5"/>'
+};
+function ic(name, opts){
+  opts = opts || {};
+  const size = opts.size || 18;
+  const color = opts.color || 'currentColor';
+  const stroke = opts.stroke || 2;
+  const fill = opts.fill || 'none';
+  const v = opts.va || 'middle';
+  // viewBox is padded by 1 unit on every side so stroked icons (especially gear teeth)
+  // never clip against the SVG edge. overflow:visible is a belt-and-suspenders fix.
+  return `<svg class="ic" width="${size}" height="${size}" viewBox="-1.5 -1.5 27 27" fill="${fill}" stroke="${color}" stroke-width="${stroke}" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:${v};display:inline-block;flex-shrink:0;overflow:visible;">${ICONS[name]||''}</svg>`;
+}
+// Country flag → small pill
+function flagPill(code){
+  return `<span style="display:inline-flex;align-items:center;justify-content:center;background:var(--cream);border:1px solid var(--border);border-radius:6px;font-size:0.62rem;font-weight:700;color:var(--ink-light);letter-spacing:0.5px;padding:0.15rem 0.4rem;line-height:1;">${code}</span>`;
+}
+// Hydrate any element with data-icon="name"
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('[data-icon]').forEach(el => {
+    const name = el.getAttribute('data-icon');
+    const sz = parseInt(el.getAttribute('data-icon-size')||'20',10);
+    const st = parseFloat(el.getAttribute('data-icon-stroke')||'2');
+    el.innerHTML = ic(name,{size:sz,stroke:st});
+  });
+});
+
 // ===== NAVIGATION =====
 function go(id){
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
@@ -1306,14 +1383,14 @@ a2msgs.forEach(m=>{f2.innerHTML+=feedItem(m,'#d4957a');});
 
 // ===== ENGAGEMENT =====
 const challenges=[
-  {icon:'&#9999;&#65039;',name:'Sort It Right Week',desc:'Correctly sort waste for 5 consecutive days',progress:72,participants:43},
-  {icon:'&#127793;',name:'Zero Waste Friday',desc:'Produce no landfill waste every Friday this month',progress:45,participants:28},
-  {icon:'&#9749;',name:'BYO Cup Challenge',desc:'Bring your own cup for 30 days straight',progress:88,participants:67},
-  {icon:'&#128218;',name:'Eco Knowledge Quiz',desc:'Complete all 5 waste education modules',progress:61,participants:52},
+  {icon:'pencil',bg:'var(--peach-pale)',color:'var(--coral-deep)',name:'Sort It Right Week',desc:'Correctly sort waste for 5 consecutive days',progress:72,participants:43},
+  {icon:'leaf',bg:'var(--sage-light)',color:'var(--sage-dark)',name:'Zero Waste Friday',desc:'Produce no landfill waste every Friday this month',progress:45,participants:28},
+  {icon:'coffee',bg:'var(--sand-light)',color:'var(--clay)',name:'BYO Cup Challenge',desc:'Bring your own cup for 30 days straight',progress:88,participants:67},
+  {icon:'book',bg:'var(--peach-pale)',color:'var(--coral-deep)',name:'Eco Knowledge Quiz',desc:'Complete all 5 waste education modules',progress:61,participants:52},
 ];
 const cg=document.getElementById('challengeGrid');
 challenges.forEach(ch=>{
-  cg.innerHTML+=`<div class="challenge-card"><div class="challenge-icon">${ch.icon}</div><h4>${ch.name}</h4><p>${ch.desc}</p><div style="margin-top:0.6rem;height:6px;background:var(--cream);border-radius:3px;overflow:hidden;"><div style="height:100%;width:${ch.progress}%;background:var(--sage);border-radius:3px;"></div></div><div style="font-size:0.74rem;color:var(--ink-muted);margin-top:0.3rem;">${ch.progress}% complete — ${ch.participants} participants</div></div>`;
+  cg.innerHTML+=`<div class="challenge-card"><div class="challenge-icon" style="display:inline-flex;width:52px;height:52px;border-radius:14px;background:${ch.bg};color:${ch.color};align-items:center;justify-content:center;margin-bottom:0.4rem;">${ic(ch.icon,{size:26,color:ch.color})}</div><h4>${ch.name}</h4><p>${ch.desc}</p><div style="margin-top:0.6rem;height:6px;background:var(--cream);border-radius:3px;overflow:hidden;"><div style="height:100%;width:${ch.progress}%;background:var(--sage);border-radius:3px;"></div></div><div style="font-size:0.74rem;color:var(--ink-muted);margin-top:0.3rem;">${ch.progress}% complete — ${ch.participants} participants</div></div>`;
 });
 
 // Leaderboard
@@ -1521,15 +1598,15 @@ const aROI=document.getElementById('acctROI');
 // ===== FLOOR GAMIFICATION =====
 const floorData=[
   {floor:'Level 5',name:'Executive & Legal',color:'#8fae8b',xp:8720,rank:1,diversion:91,contamination:3.2,streak:18,participants:42,trend:'+12%',trendUp:true,
-   badges:['&#127942; Zero Waste Champion','&#128293; 14-Day Streak','&#9889; Fastest Improver','&#127793; Green Floor Q4']},
+   badges:[['trophy','Zero Waste Champion'],['flame','14-Day Streak'],['zap','Fastest Improver'],['leaf','Green Floor Q4']]},
   {floor:'Level 4',name:'HR & Operations',color:'#d4957a',xp:7890,rank:2,diversion:87,contamination:4.1,streak:11,participants:56,trend:'+8%',trendUp:true,
-   badges:['&#128170; Contamination Crusher','&#127942; Recycling Star','&#128293; 10-Day Streak']},
+   badges:[['dumbbell','Contamination Crusher'],['trophy','Recycling Star'],['flame','10-Day Streak']]},
   {floor:'Level 3',name:'IT & Engineering',color:'#e8a87c',xp:7450,rank:3,diversion:84,contamination:5.5,streak:7,participants:68,trend:'+15%',trendUp:true,
-   badges:['&#128187; Tech Waste Eliminator','&#127793; Green Floor Q3','&#9889; Fastest Improver']},
+   badges:[['laptop','Tech Waste Eliminator'],['leaf','Green Floor Q3'],['zap','Fastest Improver']]},
   {floor:'Level 2',name:'Finance & Accounts',color:'#c9908a',xp:6980,rank:4,diversion:81,contamination:6.2,streak:4,participants:38,trend:'+3%',trendUp:true,
-   badges:['&#128200; Data-Driven Recycler','&#128293; 7-Day Streak']},
+   badges:[['barChart','Data-Driven Recycler'],['flame','7-Day Streak']]},
   {floor:'Level 1',name:'Reception & Services',color:'#d4c5a9',xp:6210,rank:5,diversion:76,contamination:8.4,streak:2,participants:31,trend:'-1%',trendUp:false,
-   badges:['&#127793; Green Starter']},
+   badges:[['leaf','Green Starter']]},
 ];
 const maxXP=floorData[0].xp;
 
@@ -1557,12 +1634,13 @@ function renderFloorScoreboard(){
   let html='';
   floorData.forEach((f,i)=>{
     const xp=Math.round(f.xp*multiplier);
-    const medals=['&#129351;','&#129352;','&#129353;','',''];
+    const medalColors=['#d4af37','#b0b0b0','#cd7f32','',''];
     const isTop=i<3;
+    const medalHtml = isTop ? `<span style="display:inline-flex;color:${medalColors[i]};">${ic('medal',{size:22,stroke:2,color:medalColors[i]})}</span>` : f.rank;
     html+=`<div style="display:grid;grid-template-columns:35px 1fr 100px 80px 80px 75px 65px;align-items:center;gap:0.6rem;padding:0.7rem 0.5rem;
       ${i===0?'background:linear-gradient(90deg,#8fae8b10,transparent);border-radius:10px;':''}
       border-bottom:1px solid #e8e0d8;font-size:0.8rem;">
-      <div style="text-align:center;font-size:${isTop?'1.2rem':'0.85rem'};font-weight:700;${isTop?'':'color:var(--ink-muted);'}">${medals[i]||f.rank}</div>
+      <div style="text-align:center;font-size:${isTop?'1.2rem':'0.85rem'};font-weight:700;${isTop?'':'color:var(--ink-muted);'}">${medalHtml}</div>
       <div>
         <div style="font-weight:700;font-size:0.85rem;">${f.floor} <span style="font-weight:400;color:var(--ink-muted);font-size:0.75rem;">— ${f.name}</span></div>
         <div style="height:6px;background:var(--cream-light);border-radius:3px;overflow:hidden;margin-top:0.3rem;max-width:260px;">
@@ -1572,8 +1650,8 @@ function renderFloorScoreboard(){
       <div style="font-family:'DM Serif Display',serif;font-size:1rem;color:${f.color};">${xp.toLocaleString()} <span style="font-size:0.65rem;font-weight:400;">XP</span></div>
       <div style="text-align:center;"><span style="font-weight:700;color:var(--sage-dark);">${f.diversion}%</span><br><span style="font-size:0.65rem;color:var(--ink-muted);">diversion</span></div>
       <div style="text-align:center;"><span style="font-weight:700;color:${f.contamination>5?'var(--coral-deep)':'var(--sage-dark)'};">${f.contamination}%</span><br><span style="font-size:0.65rem;color:var(--ink-muted);">contam.</span></div>
-      <div style="text-align:center;"><span style="font-weight:700;">&#128293; ${f.streak}</span><br><span style="font-size:0.65rem;color:var(--ink-muted);">day streak</span></div>
-      <div style="text-align:center;font-weight:600;color:${f.trendUp?'var(--sage-dark)':'var(--coral-deep)'};">${f.trendUp?'&#9650;':'&#9660;'} ${f.trend}</div>
+      <div style="text-align:center;"><span style="font-weight:700;display:inline-flex;align-items:center;gap:0.2rem;justify-content:center;"><span style="color:#e8682b;display:inline-flex;">${ic('flame',{size:14,color:'#e8682b'})}</span> ${f.streak}</span><br><span style="font-size:0.65rem;color:var(--ink-muted);">day streak</span></div>
+      <div style="text-align:center;font-weight:600;color:${f.trendUp?'var(--sage-dark)':'var(--coral-deep)'};display:flex;align-items:center;justify-content:center;gap:0.2rem;"><span style="display:inline-flex;">${ic(f.trendUp?'trendUp':'trendDown',{size:14,color:f.trendUp?'var(--sage-dark)':'var(--coral-deep)'})}</span> ${f.trend}</div>
     </div>`;
   });
   el.innerHTML=html;
@@ -1593,7 +1671,7 @@ renderFloorScoreboard();
     el.innerHTML+=`<div style="padding:0.7rem;background:var(--cream-light);border-radius:12px;margin-bottom:0.6rem;border-left:4px solid ${c.color};">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
         <span style="font-size:0.68rem;font-weight:700;padding:0.15rem 0.5rem;border-radius:8px;background:${c.color}20;color:${c.color};">${c.type}</span>
-        <span style="font-size:0.72rem;color:var(--ink-muted);">&#9200; ${c.daysLeft} days left</span>
+        <span style="font-size:0.72rem;color:var(--ink-muted);display:inline-flex;align-items:center;gap:0.25rem;"><span style="display:inline-flex;">${ic('clock',{size:12,color:'currentColor'})}</span> ${c.daysLeft} days left</span>
       </div>
       <div style="font-weight:700;font-size:0.88rem;margin-bottom:0.15rem;">${c.title}</div>
       <div style="font-size:0.75rem;color:var(--ink-muted);margin-bottom:0.15rem;">${c.desc}</div>
@@ -1619,7 +1697,7 @@ renderFloorScoreboard();
     el.innerHTML+=`<div style="margin-bottom:0.8rem;">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.35rem;">
         <span style="font-size:0.82rem;font-weight:700;">${f.floor}</span>
-        <span style="font-size:0.82rem;font-weight:700;color:${f.color};">&#128293; ${f.streak} days</span>
+        <span style="font-size:0.82rem;font-weight:700;color:${f.color};display:inline-flex;align-items:center;gap:0.25rem;"><span style="display:inline-flex;">${ic('flame',{size:13,color:f.color})}</span> ${f.streak} days</span>
       </div>
       <div style="display:flex;gap:3px;flex-wrap:wrap;">${dots}</div>
       <div style="font-size:0.68rem;color:var(--ink-muted);margin-top:0.2rem;">Best streak: ${f.streak+Math.floor(Math.random()*10)} days &bull; Target: 21 consecutive days</div>
@@ -1633,7 +1711,10 @@ renderFloorScoreboard();
   floorData.forEach(f=>{
     let badgeHtml='';
     f.badges.forEach(b=>{
-      badgeHtml+=`<span style="display:inline-block;padding:0.25rem 0.6rem;background:${f.color}15;border:1px solid ${f.color}40;border-radius:10px;font-size:0.72rem;font-weight:600;">${b}</span>`;
+      const iconName = Array.isArray(b) ? b[0] : null;
+      const label = Array.isArray(b) ? b[1] : b;
+      const iconHtml = iconName ? `<span style="margin-right:0.3rem;display:inline-flex;vertical-align:-3px;color:${f.color};">${ic(iconName,{size:13,stroke:2.2,color:f.color})}</span>` : '';
+      badgeHtml+=`<span style="display:inline-flex;align-items:center;padding:0.25rem 0.6rem;background:${f.color}15;border:1px solid ${f.color}40;border-radius:10px;font-size:0.72rem;font-weight:600;">${iconHtml}${label}</span>`;
     });
     el.innerHTML+=`<div style="padding:0.55rem 0;border-bottom:1px solid #e8e0d8;">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
@@ -1649,17 +1730,17 @@ renderFloorScoreboard();
 (function(){
   const el=document.getElementById('floorRewards');
   const rewards=[
-    {xp:2000,name:'Free Coffee Fridays',desc:'Winning floor gets barista coffee for a week',icon:'&#9749;',status:'Unlocked — L5'},
-    {xp:4000,name:'Casual Dress Week',desc:'Top floor earns a casual dress code week',icon:'&#128084;',status:'Unlocked — L5'},
-    {xp:6000,name:'Team Lunch Voucher',desc:'$500 team lunch for the floor that hits 6K XP',icon:'&#127869;',status:'Unlocked — L5, L4'},
-    {xp:8000,name:'Half-Day Friday',desc:'Floor with 8K+ XP earns a half-day Friday',icon:'&#127881;',status:'Unlocked — L5'},
-    {xp:10000,name:'Charity Donation',desc:'$2,000 donated to charity of winning floor\'s choice',icon:'&#10084;&#65039;',status:'1,280 XP to go'},
-    {xp:15000,name:'Sustainability Trophy',desc:'Permanent lobby display + CEO recognition',icon:'&#127942;',status:'6,280 XP to go'},
+    {xp:2000,name:'Free Coffee Fridays',desc:'Winning floor gets barista coffee for a week',icon:'coffee',bg:'var(--sand-light)',color:'var(--clay)',status:'Unlocked — L5'},
+    {xp:4000,name:'Casual Dress Week',desc:'Top floor earns a casual dress code week',icon:'shirt',bg:'var(--peach-pale)',color:'var(--coral-deep)',status:'Unlocked — L5'},
+    {xp:6000,name:'Team Lunch Voucher',desc:'$500 team lunch for the floor that hits 6K XP',icon:'utensils',bg:'var(--peach-pale)',color:'var(--coral-deep)',status:'Unlocked — L5, L4'},
+    {xp:8000,name:'Half-Day Friday',desc:'Floor with 8K+ XP earns a half-day Friday',icon:'party',bg:'var(--sage-light)',color:'var(--sage-dark)',status:'Unlocked — L5'},
+    {xp:10000,name:'Charity Donation',desc:'$2,000 donated to charity of winning floor\'s choice',icon:'heart',bg:'#f0d0ca',color:'#8a4040',status:'1,280 XP to go'},
+    {xp:15000,name:'Sustainability Trophy',desc:'Permanent lobby display + CEO recognition',icon:'trophy',bg:'var(--sage-light)',color:'var(--sage-dark)',status:'6,280 XP to go'},
   ];
   rewards.forEach(r=>{
     const unlocked=r.status.startsWith('Unlocked');
     el.innerHTML+=`<div style="display:flex;align-items:center;gap:0.7rem;padding:0.55rem 0;border-bottom:1px solid #e8e0d8;">
-      <div style="font-size:1.3rem;width:32px;text-align:center;${unlocked?'':'opacity:0.4;filter:grayscale(1);'}">${r.icon}</div>
+      <div style="width:36px;height:36px;border-radius:10px;background:${r.bg};color:${r.color};display:flex;align-items:center;justify-content:center;flex-shrink:0;${unlocked?'':'opacity:0.45;filter:grayscale(0.7);'}">${ic(r.icon,{size:18,color:r.color})}</div>
       <div style="flex:1;">
         <div style="font-size:0.82rem;font-weight:700;${unlocked?'':'color:var(--ink-muted);'}">${r.name}</div>
         <div style="font-size:0.72rem;color:var(--ink-muted);">${r.desc}</div>
@@ -1676,18 +1757,19 @@ renderFloorScoreboard();
 (function(){
   const el=document.getElementById('floorFeed');
   const feed=[
-    {time:'Just now',msg:'&#127942; Level 5 earned the <b>Zero Waste Champion</b> badge!',color:'var(--sage-dark)'},
-    {time:'3 min ago',msg:'&#128293; Level 4 hit an <b>11-day streak</b> — new floor record!',color:'var(--coral)'},
-    {time:'12 min ago',msg:'&#9889; Level 3 overtook Level 2 on the weekly scoreboard (+470 XP)',color:'var(--peach)'},
-    {time:'28 min ago',msg:'&#9749; Level 5 unlocked <b>Free Coffee Fridays</b> reward',color:'var(--sage)'},
-    {time:'45 min ago',msg:'&#128230; Level 1 recycling rate improved 6% after Sorting Challenge started',color:'var(--sand)'},
-    {time:'1 hr ago',msg:'&#127793; Building-wide March Zero Waste Marathon — 38% progress',color:'var(--sage-dark)'},
-    {time:'1.5 hrs ago',msg:'&#128200; Level 2 completed <b>Eco Knowledge Quiz</b> — 34/38 employees passed',color:'var(--coral-deep)'},
-    {time:'2 hrs ago',msg:'&#128680; Level 1 contamination spike detected — engagement nudge sent to 31 staff',color:'var(--coral)'},
+    {time:'Just now',icon:'trophy',msg:'Level 5 earned the <b>Zero Waste Champion</b> badge!',color:'var(--sage-dark)'},
+    {time:'3 min ago',icon:'flame',msg:'Level 4 hit an <b>11-day streak</b> — new floor record!',color:'var(--coral)'},
+    {time:'12 min ago',icon:'zap',msg:'Level 3 overtook Level 2 on the weekly scoreboard (+470 XP)',color:'var(--peach)'},
+    {time:'28 min ago',icon:'coffee',msg:'Level 5 unlocked <b>Free Coffee Fridays</b> reward',color:'var(--sage)'},
+    {time:'45 min ago',icon:'package',msg:'Level 1 recycling rate improved 6% after Sorting Challenge started',color:'var(--sand)'},
+    {time:'1 hr ago',icon:'leaf',msg:'Building-wide March Zero Waste Marathon — 38% progress',color:'var(--sage-dark)'},
+    {time:'1.5 hrs ago',icon:'barChart',msg:'Level 2 completed <b>Eco Knowledge Quiz</b> — 34/38 employees passed',color:'var(--coral-deep)'},
+    {time:'2 hrs ago',icon:'siren',msg:'Level 1 contamination spike detected — engagement nudge sent to 31 staff',color:'var(--coral)'},
   ];
   feed.forEach(f=>{
-    el.innerHTML+=`<div style="display:flex;gap:0.6rem;padding:0.5rem 0;border-bottom:1px solid #e8e0d8;">
-      <div style="width:4px;border-radius:2px;background:${f.color};flex-shrink:0;"></div>
+    el.innerHTML+=`<div style="display:flex;gap:0.6rem;padding:0.5rem 0;border-bottom:1px solid #e8e0d8;align-items:flex-start;">
+      <div style="width:4px;border-radius:2px;background:${f.color};flex-shrink:0;align-self:stretch;"></div>
+      <div style="width:28px;height:28px;border-radius:8px;background:${f.color}20;color:${f.color};display:flex;align-items:center;justify-content:center;flex-shrink:0;">${ic(f.icon,{size:15,color:f.color})}</div>
       <div style="flex:1;">
         <div style="font-size:0.8rem;line-height:1.4;">${f.msg}</div>
         <div style="font-size:0.68rem;color:var(--ink-muted);margin-top:0.15rem;">${f.time}</div>
@@ -1730,7 +1812,7 @@ const standards = [
     fullName:'IFRS Sustainability Disclosure Standards',
     org:'International Sustainability Standards Board (ISSB)',
     color:'#8fae8b',
-    icon:'&#127760;',
+    icon:'globe',
     status:'Compliant',
     coverage:94,
     description:'Global baseline for sustainability-related financial disclosures. IFRS S1 covers general sustainability risks and opportunities; IFRS S2 focuses on climate-related disclosures aligned with TCFD.',
@@ -1751,7 +1833,7 @@ const standards = [
     fullName:'Global Reporting Initiative Standards (2021)',
     org:'Global Sustainability Standards Board (GSSB)',
     color:'#d4957a',
-    icon:'&#128202;',
+    icon:'barChart',
     status:'Compliant',
     coverage:91,
     description:'The world\'s most widely used sustainability reporting framework. Material topic-based approach covering environmental, social and governance impacts.',
@@ -1772,7 +1854,8 @@ const standards = [
     fullName:'National Australian Built Environment Rating System',
     org:'NSW Department of Planning & Environment',
     color:'#e8a87c',
-    icon:'&#127462;&#127482;',
+    icon:'building',
+    flag:'AU',
     status:'Ready',
     coverage:97,
     description:'Australia\'s national rating system for the environmental performance of buildings. NABERS Waste measures waste management performance across office, hotel, and shopping centre building types.',
@@ -1793,7 +1876,7 @@ const standards = [
     fullName:'Task Force on Climate-related Financial Disclosures',
     org:'Financial Stability Board (now integrated into ISSB)',
     color:'#c9908a',
-    icon:'&#127777;&#65039;',
+    icon:'thermometer',
     status:'Compliant',
     coverage:88,
     description:'Framework for climate-related financial risk disclosures across four pillars: Governance, Strategy, Risk Management, and Metrics & Targets. Now consolidated under IFRS S2.',
@@ -1814,7 +1897,8 @@ const standards = [
     fullName:'European Sustainability Reporting Standards',
     org:'European Financial Reporting Advisory Group (EFRAG)',
     color:'#b07d62',
-    icon:'&#127466;&#127482;',
+    icon:'globe',
+    flag:'EU',
     status:'Partial',
     coverage:76,
     description:'Mandatory reporting standards under the EU Corporate Sustainability Reporting Directive (CSRD). Double materiality approach covering both financial and impact perspectives.',
@@ -1835,7 +1919,7 @@ const standards = [
     fullName:'Carbon Disclosure Project',
     org:'CDP Worldwide',
     color:'#8fae8b',
-    icon:'&#127795;',
+    icon:'tree',
     status:'Compliant',
     coverage:85,
     description:'Global environmental disclosure system used by 23,000+ companies. Questionnaire-based scoring across climate change, water security, and forests.',
@@ -1856,7 +1940,7 @@ const standards = [
     fullName:'ISO Environmental Management & GHG Standards',
     org:'International Organization for Standardization',
     color:'#d4c5a9',
-    icon:'&#128220;',
+    icon:'scroll',
     status:'Ready',
     coverage:90,
     description:'ISO 14001 provides the framework for Environmental Management Systems (EMS). ISO 14064 specifies requirements for quantifying and reporting GHG emissions.',
@@ -1877,7 +1961,8 @@ const standards = [
     fullName:'National Greenhouse and Energy Reporting (Australia)',
     org:'Clean Energy Regulator',
     color:'#d4957a',
-    icon:'&#127462;&#127482;',
+    icon:'building',
+    flag:'AU',
     status:'Ready',
     coverage:92,
     description:'Australia\'s mandatory framework for reporting greenhouse gas emissions, energy production and energy consumption. Required for facilities exceeding threshold.',
@@ -1899,12 +1984,15 @@ let activeStd = 'ifrs';
 // Render standard tabs
 const stdTabsEl=document.getElementById('stdTabs');
 standards.forEach(s=>{
+  const isActive = s.id===activeStd;
+  const tabIconColor = isActive ? '#fff' : s.color;
   stdTabsEl.innerHTML+=`<button onclick="selectStd('${s.id}')" id="stdTab-${s.id}" style="
+    display:inline-flex;align-items:center;gap:0.4rem;
     padding:0.45rem 1rem;border-radius:20px;border:1.5px solid ${s.color};
-    background:${s.id===activeStd?s.color:'transparent'};
-    color:${s.id===activeStd?'#fff':'var(--ink)'};
+    background:${isActive?s.color:'transparent'};
+    color:${isActive?'#fff':'var(--ink)'};
     font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:600;cursor:pointer;
-    transition:all 0.2s;">${s.icon} ${s.name}</button>`;
+    transition:all 0.2s;"><span style="display:inline-flex;color:${tabIconColor};">${ic(s.icon,{size:14,color:tabIconColor})}</span>${s.flag?flagPill(s.flag):''} ${s.name}</button>`;
 });
 
 function selectStd(id){
@@ -1926,7 +2014,8 @@ function renderStdDetail(){
     <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;margin-bottom:1rem;">
       <div style="flex:1;min-width:280px;">
         <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.4rem;">
-          <span style="font-size:1.4rem;">${s.icon}</span>
+          <span style="display:inline-flex;width:38px;height:38px;border-radius:10px;background:${s.color}20;color:${s.color};align-items:center;justify-content:center;">${ic(s.icon,{size:20,color:s.color})}</span>
+          ${s.flag?flagPill(s.flag):''}
           <h3 style="margin:0;font-size:1.1rem;">${s.fullName}</h3>
         </div>
         <p style="font-size:0.78rem;color:var(--ink-muted);margin:0 0 0.3rem;">${s.org}</p>
@@ -1967,7 +2056,7 @@ function renderStdDetail(){
       <td style="padding:0.5rem 0.7rem;text-align:center;">
         <span style="display:inline-block;padding:0.2rem 0.6rem;border-radius:10px;font-size:0.7rem;font-weight:600;
           background:${m.mapped?s.color+'20':'#f5e6e0'};color:${m.mapped?s.color:'#c0392b'};">
-          ${m.mapped?'&#10003; Mapped':'&#9675; Gap'}
+          <span style="display:inline-flex;align-items:center;gap:0.25rem;">${m.mapped?ic('check',{size:12,stroke:2.5,color:s.color}):ic('circle',{size:12,stroke:2,color:'#c0392b'})}${m.mapped?'Mapped':'Gap'}</span>
         </span>
       </td>
     </tr>`;
@@ -2000,17 +2089,17 @@ function renderComplianceMatrix(){
 function renderExportPanel(){
   const el=document.getElementById('exportPanel');
   const formats=[
-    {name:'IFRS XBRL Digital Report',icon:'&#128196;',format:'XBRL / iXBRL',desc:'Machine-readable taxonomy for ISSB disclosures'},
-    {name:'GRI Content Index',icon:'&#128203;',format:'PDF / Excel',desc:'Standard GRI content index with page references'},
-    {name:'NABERS Submission Pack',icon:'&#127462;&#127482;',format:'NABERS Portal CSV',desc:'Pre-formatted for NABERS online rating submission'},
-    {name:'CDP Questionnaire Export',icon:'&#127795;',format:'CDP ORS Format',desc:'Auto-populated responses for CDP online response system'},
-    {name:'NGER Report (Sec 19)',icon:'&#128220;',format:'EERS XML',desc:'Clean Energy Regulator electronic submission format'},
-    {name:'Custom ESG Report',icon:'&#128218;',format:'PDF / DOCX / HTML',desc:'Branded multi-framework report with executive summary'},
+    {name:'IFRS XBRL Digital Report',icon:'fileText',color:'#8fae8b',format:'XBRL / iXBRL',desc:'Machine-readable taxonomy for ISSB disclosures'},
+    {name:'GRI Content Index',icon:'clipboard',color:'#d4957a',format:'PDF / Excel',desc:'Standard GRI content index with page references'},
+    {name:'NABERS Submission Pack',icon:'building',color:'#e8a87c',format:'NABERS Portal CSV',desc:'Pre-formatted for NABERS online rating submission'},
+    {name:'CDP Questionnaire Export',icon:'tree',color:'#5f8a5c',format:'CDP ORS Format',desc:'Auto-populated responses for CDP online response system'},
+    {name:'NGER Report (Sec 19)',icon:'scroll',color:'#b07d62',format:'EERS XML',desc:'Clean Energy Regulator electronic submission format'},
+    {name:'Custom ESG Report',icon:'book',color:'#c9908a',format:'PDF / DOCX / HTML',desc:'Branded multi-framework report with executive summary'},
   ];
   let html='<div style="display:grid;gap:0.55rem;">';
   formats.forEach(f=>{
     html+=`<div style="display:flex;align-items:center;gap:0.7rem;padding:0.55rem 0.7rem;background:var(--cream-light);border-radius:10px;">
-      <span style="font-size:1.2rem;">${f.icon}</span>
+      <span style="display:inline-flex;width:32px;height:32px;border-radius:8px;background:${f.color}20;color:${f.color};align-items:center;justify-content:center;flex-shrink:0;">${ic(f.icon,{size:16,color:f.color})}</span>
       <div style="flex:1;">
         <div style="font-size:0.8rem;font-weight:600;">${f.name}</div>
         <div style="font-size:0.7rem;color:var(--ink-muted);">${f.desc}</div>
@@ -2028,7 +2117,7 @@ function renderRegionalReqs(){
   const regions=[
     {
       name:'Australia',
-      flag:'&#127462;&#127482;',
+      flag:'AU',
       color:'#e8a87c',
       regs:[
         {name:'NABERS Waste Rating',status:'Active',note:'Mandatory for large commercial buildings in NSW; voluntary nationally'},
@@ -2040,7 +2129,7 @@ function renderRegionalReqs(){
     },
     {
       name:'United States',
-      flag:'&#127482;&#127480;',
+      flag:'US',
       color:'#8fae8b',
       regs:[
         {name:'SEC Climate Disclosure',status:'Active',note:'Climate-related risk disclosures for public companies'},
@@ -2052,7 +2141,7 @@ function renderRegionalReqs(){
     },
     {
       name:'Canada',
-      flag:'&#127464;&#127462;',
+      flag:'CA',
       color:'#d4957a',
       regs:[
         {name:'CSSB Standards (ISSB)',status:'Pending',note:'Canadian adoption of IFRS S1/S2 — voluntary 2024, mandatory TBD'},
@@ -2064,7 +2153,7 @@ function renderRegionalReqs(){
     },
     {
       name:'European Union',
-      flag:'&#127466;&#127482;',
+      flag:'EU',
       color:'#b07d62',
       regs:[
         {name:'CSRD / ESRS',status:'Partial',note:'Corporate Sustainability Reporting Directive — phased from 2024'},
@@ -2078,7 +2167,7 @@ function renderRegionalReqs(){
   regions.forEach(r=>{
     let html=`<div style="background:var(--cream-light);border-radius:14px;padding:1rem;border-left:4px solid ${r.color};">
       <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.7rem;">
-        <span style="font-size:1.3rem;">${r.flag}</span>
+        ${flagPill(r.flag)}
         <h4 style="margin:0;font-size:0.95rem;">${r.name}</h4>
       </div>`;
     r.regs.forEach(reg=>{
@@ -2197,19 +2286,19 @@ renderCocTable();
 (function(){
   const el=document.getElementById('securityEvents');
   const events=[
-    {icon:'&#9989;',bg:'#8fae8b20',time:'2 min ago',msg:'Bin #SEC-042 sealed and locked — L3 Exec Suite',type:'success'},
-    {icon:'&#128274;',bg:'#e8a87c20',time:'14 min ago',msg:'Collection agent verified — Iron Mountain (ID: IM-7829)',type:'info'},
-    {icon:'&#9989;',bg:'#8fae8b20',time:'28 min ago',msg:'Certificate of Destruction issued — Batch #BD-20260228-017',type:'success'},
-    {icon:'&#9888;&#65039;',bg:'#d4957a20',time:'1 hr ago',msg:'Bin #SEC-019 weight discrepancy detected — L5 Legal (Δ 0.3kg)',type:'warning'},
-    {icon:'&#128274;',bg:'#e8a87c20',time:'1.5 hrs ago',msg:'GPS transit verified — SecureShred AU vehicle en route to facility',type:'info'},
-    {icon:'&#9989;',bg:'#8fae8b20',time:'2 hrs ago',msg:'P-6 cross-cut shredding completed — 847 pages verified by AI vision',type:'success'},
-    {icon:'&#128680;',bg:'#c0392b15',time:'3 hrs ago',msg:'Unauthorised bin access attempt — L2 Finance (access denied, alert sent)',type:'alert'},
-    {icon:'&#9989;',bg:'#8fae8b20',time:'4 hrs ago',msg:'Monthly compliance audit auto-completed — all 34 bins verified',type:'success'},
+    {icon:'checkCircle',color:'#5f8a5c',bg:'#8fae8b20',time:'2 min ago',msg:'Bin #SEC-042 sealed and locked — L3 Exec Suite',type:'success'},
+    {icon:'lock',color:'#c07a5f',bg:'#e8a87c20',time:'14 min ago',msg:'Collection agent verified — Iron Mountain (ID: IM-7829)',type:'info'},
+    {icon:'checkCircle',color:'#5f8a5c',bg:'#8fae8b20',time:'28 min ago',msg:'Certificate of Destruction issued — Batch #BD-20260228-017',type:'success'},
+    {icon:'alert',color:'#c87b3d',bg:'#d4957a20',time:'1 hr ago',msg:'Bin #SEC-019 weight discrepancy detected — L5 Legal (Δ 0.3kg)',type:'warning'},
+    {icon:'truck',color:'#c07a5f',bg:'#e8a87c20',time:'1.5 hrs ago',msg:'GPS transit verified — SecureShred AU vehicle en route to facility',type:'info'},
+    {icon:'checkCircle',color:'#5f8a5c',bg:'#8fae8b20',time:'2 hrs ago',msg:'P-6 cross-cut shredding completed — 847 pages verified by AI vision',type:'success'},
+    {icon:'siren',color:'#c0392b',bg:'#c0392b15',time:'3 hrs ago',msg:'Unauthorised bin access attempt — L2 Finance (access denied, alert sent)',type:'alert'},
+    {icon:'checkCircle',color:'#5f8a5c',bg:'#8fae8b20',time:'4 hrs ago',msg:'Monthly compliance audit auto-completed — all 34 bins verified',type:'success'},
   ];
   events.forEach(e=>{
     const borderColor=e.type==='alert'?'#c0392b':e.type==='warning'?'#d4957a':e.type==='info'?'#e8a87c':'#8fae8b';
     el.innerHTML+=`<div class="sec-event">
-      <div class="sec-event-icon" style="background:${e.bg};">${e.icon}</div>
+      <div class="sec-event-icon" style="background:${e.bg};color:${e.color};display:inline-flex;align-items:center;justify-content:center;">${ic(e.icon,{size:18,color:e.color})}</div>
       <div style="flex:1;">
         <div style="font-size:0.8rem;${e.type==='alert'?'font-weight:700;color:#c0392b;':''}">${e.msg}</div>
         <div style="font-size:0.68rem;color:var(--ink-muted);margin-top:0.15rem;">${e.time}</div>
@@ -2255,15 +2344,17 @@ renderCocTable();
     {floor:'Level 2',bins:[{loc:'Finance',status:'Collecting',fill:73},{loc:'Accounts',status:'Sealed',fill:88}]},
     {floor:'Level 1',bins:[{loc:'Reception',status:'Collecting',fill:31},{loc:'Mail Room',status:'Sealed',fill:95}]},
   ];
-  const statusIcon={'Sealed':'&#128274;','Collecting':'&#128230;','In Transit':'&#128666;'};
+  const statusIconName={'Sealed':'lock','Collecting':'package','In Transit':'truck'};
   const statusColor={'Sealed':'#8fae8b','Collecting':'#e8a87c','In Transit':'#d4957a'};
   floors.forEach(f=>{
     let binsHtml='';
     f.bins.forEach(b=>{
-      binsHtml+=`<div style="flex:1;min-width:120px;padding:0.5rem;background:#fff;border-radius:10px;border:1.5px solid ${statusColor[b.status]}40;">
+      const sn=statusIconName[b.status];
+      const sc=statusColor[b.status];
+      binsHtml+=`<div style="flex:1;min-width:120px;padding:0.5rem;background:#fff;border-radius:10px;border:1.5px solid ${sc}40;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;">
           <span style="font-size:0.78rem;font-weight:600;">${b.loc}</span>
-          <span style="font-size:0.85rem;">${statusIcon[b.status]||''}</span>
+          <span style="display:inline-flex;color:${sc};">${sn?ic(sn,{size:14,color:sc}):''}</span>
         </div>
         <div style="height:5px;background:var(--cream-light);border-radius:3px;overflow:hidden;margin-bottom:0.25rem;">
           <div style="height:100%;width:${b.fill}%;background:${b.fill>80?'var(--coral-deep)':b.fill>50?'var(--peach)':'var(--sage)'};border-radius:3px;"></div>
@@ -2296,7 +2387,7 @@ renderCocTable();
     el.innerHTML+=`<div style="display:flex;align-items:center;gap:0.7rem;padding:0.55rem 0;border-bottom:1px solid #e8e0d8;">
       <div style="flex:1;">
         <div style="font-size:0.82rem;font-weight:600;">${m.name}</div>
-        <div style="font-size:0.7rem;color:var(--ink-muted);">${m.passed}/${m.enrolled} employees &bull; ${isDone?'&#9989; '+m.due:'Due: '+m.due}</div>
+        <div style="font-size:0.7rem;color:var(--ink-muted);display:flex;align-items:center;gap:0.3rem;flex-wrap:wrap;">${m.passed}/${m.enrolled} employees &bull; ${isDone?`<span style="display:inline-flex;align-items:center;gap:0.2rem;color:var(--sage-dark);">${ic('checkCircle',{size:12,color:'var(--sage-dark)'})} ${m.due}</span>`:'Due: '+m.due}</div>
       </div>
       <div style="width:80px;">
         <div style="height:6px;background:var(--cream-light);border-radius:3px;overflow:hidden;">
@@ -2325,13 +2416,13 @@ renderCocTable();
         <span style="font-size:0.7rem;color:var(--ink-muted);">${c.date}</span>
       </div>
       <div style="display:flex;flex-wrap:wrap;gap:0.6rem;font-size:0.75rem;">
-        <span>&#128196; ${c.pages.toLocaleString()} pages</span>
-        <span>&#128296; ${c.method}</span>
-        <span>&#127970; ${c.partner}</span>
+        <span style="display:inline-flex;align-items:center;gap:0.25rem;color:var(--ink-light);">${ic('fileText',{size:13,color:'var(--ink-light)'})} ${c.pages.toLocaleString()} pages</span>
+        <span style="display:inline-flex;align-items:center;gap:0.25rem;color:var(--ink-light);">${ic('hammer',{size:13,color:'var(--ink-light)'})} ${c.method}</span>
+        <span style="display:inline-flex;align-items:center;gap:0.25rem;color:var(--ink-light);">${ic('building',{size:13,color:'var(--ink-light)'})} ${c.partner}</span>
       </div>
-      <div style="margin-top:0.3rem;font-size:0.68rem;color:var(--ink-muted);">
+      <div style="margin-top:0.3rem;font-size:0.68rem;color:var(--ink-muted);display:flex;align-items:center;gap:0.3rem;flex-wrap:wrap;">
         Blockchain hash: <code style="background:#fff;padding:0.1rem 0.3rem;border-radius:4px;font-size:0.65rem;">${c.hash}</code>
-        &bull; Tamper-proof &#9989;
+        &bull; Tamper-proof <span style="display:inline-flex;color:var(--sage-dark);">${ic('checkCircle',{size:12,color:'var(--sage-dark)'})}</span>
       </div>
     </div>`;
   });
